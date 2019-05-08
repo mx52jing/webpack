@@ -33,8 +33,7 @@ output选项
 |选项|说明|
 |--|--|
 |path|打包代码存放的目录，必须是绝对路径|
-|filename|打包后的文件名称，可以写死例如`bundle.js`<br>entry: 当`entry`是字符串时，`[name]`默认是`main`，当`entry`是对象时，`[name]`是`对象路径对应的key`。<br>
-[hash]: 打包后文件的`hash`值，这个值是根据打包后文件内容生成的`hash`值，**如果文件内容不变，连续打包两次hash值一样**,可以自己规定hash值长度，使用`[hash:length]`，length就是自己期望的hash值长度|
+|filename|打包后的文件名称，可以写死例如`bundle.js`<br>entry: 当`entry`是字符串时，`[name]`默认是`main`，当`entry`是对象时，`[name]`是`对象路径对应的key`。<br>[hash]: 打包后文件的`hash`值，这个值是根据打包后文件内容生成的`hash`值，**如果文件内容不变，连续打包两次hash值一样**,可以自己规定hash值长度，使用`[hash:length]`，length就是自己期望的hash值长度|
 
 #### webpack-dev-server
 
