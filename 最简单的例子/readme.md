@@ -7,14 +7,14 @@
 字符串
 
 ```javascript
-entry: path.join(__dirname, 'src/index.js);
+entry: path.join(__dirname, 'src/index.js');
 ```
 对象
 
 ```javascript
 entry: {
-    foo: path.join(__dirname, 'src/foo.js),
-    baz: path.join(__dirname, 'src/baz.js),
+    foo: path.join(__dirname, 'src/foo.js'),
+    baz: path.join(__dirname, 'src/baz.js'),
 }
 ```
 
@@ -90,3 +90,10 @@ plugins: [
 - minify: 优化项
     - collapseWhitespace: 移除html中的换行
     - removeAttributeQuotes: 移除html中的双引号
+
+|选项|说明|
+|--|--|
+|template|基础模版的路径|
+|filename|生成的文件名，一般为`index.html`|
+|hash|引入文件带hash值，例如: `main.js?hash值`|
+|minify|优化项<br>collapseWhitespace: 移除html中的换行<br>removeAttributeQuotes: 移除html中的双引号|
