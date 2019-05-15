@@ -1,2 +1,2 @@
-# webpack-study
+# webpack
 webpack
