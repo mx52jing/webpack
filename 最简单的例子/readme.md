@@ -32,7 +32,7 @@ output选项
 
 |选项|说明|
 |--|--|
-|path|打包代码存放的目录，必须是绝对路径|
+|path|打包代码存放的目录，**必须是绝对路径**|
 |filename|打包后的文件名称，可以写死例如`bundle.js`<br>[name]: 当`entry`是字符串时，`[name]`默认是`main`，当`entry`是对象时，`[name]`是`对象路径对应的key值`。<br>[hash]: 打包后文件的`hash`值，这个值是根据打包后文件内容生成的`hash`值，**如果文件内容不变，连续打包两次hash值一样**,可以自己规定hash值长度，使用`[hash:length]`，length就是自己期望的hash值长度|
 
 #### webpack-dev-server
@@ -65,7 +65,7 @@ devServer: {
 
 #### html-webpack-plugin
 
-webpack插件中的一个，插件都是一个类，使用的时候需要new
+webpack插件中的一个，**webpack的插件都是类**，使用的时候需要new
 
 ```javascript
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -83,7 +83,7 @@ plugins: [
 ]
 ```
 
-每次改了文件内容打包后会生成一个新的js或者其他，不可能每次去改打包后html中引入的文件。而`html-webpack-plugin`会以指定的html为模版，生成一个html,每次修改并打包后html中引入模块的内容也会改变
+每次改了文件内容打包后会生成新的js或者其他资源，不可能每次去改打包后html中引入的文件的名称。而`html-webpack-plugin`会以指定的html为模版，生成一个html,每次修改并打包后html中引入模块的内容也会改变
 
 相关选项
 
