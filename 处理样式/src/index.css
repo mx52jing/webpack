@@ -1,0 +1,8 @@
+.content span {
+  color: red;
+}
+.content p {
+  color: blueviolet;
+  transform: translateX(100px);
+}
+

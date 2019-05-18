@@ -1,0 +1,14 @@
+@import './test.scss';
+@import './aaa.css';
+
+.content {
+    span {
+        font-weight: 500;
+    }
+    p {
+        border: 1px solid #ff5588;
+        user-select: auto;
+        border-radius: $base-radius;
+        @include basic-center;
+    }
+}

@@ -1,0 +1,8 @@
+$base-radius: 5px;
+$base-color: red;
+
+@mixin basic-center() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
