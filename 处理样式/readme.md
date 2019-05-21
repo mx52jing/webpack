@@ -249,3 +249,4 @@ $base-color: red;
         filename: 'css/[name].css'
     })
 ```
+**注意⚠️:** MiniCssExtractPlugin目前还不支持热更新，所以尽量不要在开发环境使用
