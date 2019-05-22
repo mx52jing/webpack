@@ -17,8 +17,8 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    // 'style-loader',
-                    MiniCssExtractPlugin.loader,
+                    'style-loader',
+                    // MiniCssExtractPlugin.loader,
                     'css-loader',
                     'postcss-loader',
                 ]
@@ -26,9 +26,13 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    // 'style-loader',
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 3
+                        }
+                    },
                     'postcss-loader',
                     'sass-loader',
                     {
@@ -44,18 +48,18 @@ module.exports = {
         ]
     },
     plugins: [
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].css'
-        }),
+        // new MiniCssExtractPlugin({
+        //     filename: 'css/[name].css'
+        // }),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: resolve('index.html'),
             filename: 'index.html',
             hash: true,
-            minify: {
-                removeAttributeQuotes: true,
-                collapseWhitespace: true
-            }
+            // minify: {
+            //     removeAttributeQuotes: true,
+            //     collapseWhitespace: true
+            // }
         })
     ],
     devServer: {

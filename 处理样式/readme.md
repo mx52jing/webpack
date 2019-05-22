@@ -250,3 +250,39 @@ $base-color: red;
     })
 ```
 **注意⚠️:** MiniCssExtractPlugin目前还不支持热更新，所以尽量不要在开发环境使用
+
+### importLoaders
+
+用于配置「css-loader 作用于 @import 的资源之前」有多少个 loader。
+
+要解决这个问题，可以在css-loader中配置importLoaders,默认是0，配置的是1，从,根据自己配置loader情况来选择配置几
+
+比如：
+
+```javascript
+            {
+                test: /\.scss$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 0 // 默认是0
+                        }
+                    },
+                    'postcss-loader',
+                    'sass-loader',
+                    {
+                        loader: 'style-resources-loader',
+                        options: {
+                            patterns: [
+                                resolve('src', 'common.scss')
+                            ]
+                        }
+                    }
+                ]
+            }
+```
+如果在scss文件中通过@import引入css,不会执行postcss-loader,需要把importLoaders配置1，才会为scss中引入的css加前缀
+
+**⚠️注意:** 最好把`sass-loader`配置在`postcss-loader`前面，不然不管importLoaders配置为几，在scss文件中引入的scss都不会被postcss-loader解析

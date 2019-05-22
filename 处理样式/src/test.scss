@@ -1,4 +1,5 @@
-.aaa {
-    user-select: none;
+.content {
+    user-select: auto;
+    background-color: $base-color;
     border-radius: $base-radius;
 }
