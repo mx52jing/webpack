@@ -19,7 +19,8 @@ plugins: [
 
 在`index.js`中添加一段代码，然后引入`index.css`，使用`webpack-dev-server`运行会报错，这是因为webpack默认只认识js代码，不能自己处理css，如果想要webpack也对css进行打包，就要借助于`loader`,
 在webpack中，`loader`的执行功能是单一的，只会解析打包对应的匹配资源
-**注意⚠️**：`loader的执行顺序`是`从右往左，从下往上`的。所哟在写loader的时候要注意顺序
+
+**⚠️注意**：`loader的执行顺序`是`从右往左，从下往上`的。所哟在写loader的时候要注意顺序
 
 处理css需要用到`style-loader`和`css-loader`
 
@@ -249,7 +250,8 @@ $base-color: red;
         filename: 'css/[name].css'
     })
 ```
-**注意⚠️:** MiniCssExtractPlugin目前还不支持热更新，所以尽量不要在开发环境使用
+
+**⚠️注意:** MiniCssExtractPlugin目前还不支持热更新，所以尽量不要在开发环境使用
 
 ### importLoaders
 
