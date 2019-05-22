@@ -1,7 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const resolve = (...paths) => path.resolve(__dirname, ...paths)
 
@@ -14,15 +13,6 @@ module.exports = {
     },
     module: {
         rules: [
-            {
-                test: /\.css$/,
-                use: [
-                    'style-loader',
-                    // MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'postcss-loader',
-                ]
-            },
             {
                 test: /\.scss$/,
                 use: [
@@ -44,13 +34,26 @@ module.exports = {
                         }
                     }
                 ]
-            }
+            },
+            {
+                test: /\.(jpg|jpeg|png|svg|gif)$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            // limit: 200 * 1024
+                            mimetype: 'image/svg'
+                        }
+                    }
+                ]
+            },
+            // {
+            //     test: /\.html$/,
+            //     use: 'html-withimg-loader'
+            // }
         ]
     },
     plugins: [
-        // new MiniCssExtractPlugin({
-        //     filename: 'css/[name].css'
-        // }),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: resolve('index.html'),
