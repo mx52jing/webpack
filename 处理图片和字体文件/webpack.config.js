@@ -41,16 +41,30 @@ module.exports = {
                     {
                         loader: "url-loader",
                         options: {
-                            // limit: 200 * 1024
-                            mimetype: 'image/svg'
+                            // name: '[name].[ext]',
+                            outputPath: 'image/',
+                            limit: 1 * 1024,
+                            // publicPath: 'http://www.mxing.com/image'
                         }
                     }
                 ]
             },
-            // {
-            //     test: /\.html$/,
-            //     use: 'html-withimg-loader'
-            // }
+            {
+                test: /\.html$/,
+                use: 'html-withimg-loader'
+            },
+            {
+                test: /\.(eot|ttf|woff|svg)$/,
+                include: /fonts/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            outputPath: 'fonts/'
+                        }
+                    }
+                ]
+            }
         ]
     },
     plugins: [
