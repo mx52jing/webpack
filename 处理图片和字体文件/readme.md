@@ -85,7 +85,7 @@ You may need an appropriate loader to handle this file type.
             }
 ```
 
-- outputPath: 如果我们想吧图片打包到目录下面，可以配置这个参数
+- outputPath: 如果我们想吧图片打包到单独的目录下面，可以配置这个参数
 
 下面的配置可以把图片打包到`dist目录下的image文件夹下`
 
@@ -157,7 +157,7 @@ You may need an appropriate loader to handle this file type.
 
 我们直接使用file-loader来处理字体文件，并且吧字体文件打包到fonts目录下
 
-为了避免处理字体文件的svg和页面引入svg冲突，可以在处理字体文件中添加`include`字段为fonts，这样就只处理fonts下面的svg
+为了避免处理字体文件的svg和页面引入svg图片冲突，可以在处理字体文件中添加`include`字段为fonts，这样就只处理fonts下面的svg
 
 ````javascript
             {

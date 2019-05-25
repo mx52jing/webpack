@@ -3,7 +3,7 @@
 ### 先说一个插件`clean-webpacl-plugin`
 
 我们每次修改了文件内容然后重新打包后，每次都会生成新的文件放到打包目录下(我的是dist目录)，而且老的生成的文件也在，这样看起来非常不方便，
-`clean-webpack-plugin`帮助解决这个问题，在每次打包的时候，`回先把dist目录清空`，然后再把打包后的文件放到`dist目录` 。
+`clean-webpack-plugin`帮助解决这个问题，在每次打包的时候，`会先把dist目录清空`，然后再把打包后的文件放到`dist目录` 。
 
 需要在plugins数组内添加这个插件，插件的使用都一样， 使用的时候需要new一下
 
@@ -13,7 +13,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 plugins: [
     new CleanWebpackPlugin()
 ]
-```****
+```
 
 ### 处理css
 
@@ -99,7 +99,7 @@ module: {
 
 ### 处理scss
 
-处理scss要用到`scss-loader`和`node-sass`，先安装,然后新建`style.scss`并引入，然后修改配置文件
+处理scss要用到`sass-loader`,sass-loader依赖于`node-sass`，先安装sass-loader和node-sass,然后新建`style.scss`并引入，然后修改配置文件
 
 ```javascript
     module: {
@@ -197,7 +197,7 @@ $base-color: red;
 
 ### 单独打包css
 
-现在我们使用`style-loader`来将css插入head，这样会把css和js打包到一个文件中-`main.js`,如果项目中的js和css会很多，这将会使main.js体积十分大，加载的时候会很慢，
+现在我们使用`style-loader`来将css插入head，这样会把css和js打包到`main.js`中，如果项目中的js和css会很多，这将会使main.js体积十分大，首次加载的时候会很慢，性能会很差，
 所以我们希望把css单独打包，这时就要用到一个插件`mini-css-extract-plugin`，文档地址在[这里](https://www.npmjs.com/package/mini-css-extract-plugin)，
 我们引入这个插件然后修改配置：
 
@@ -257,8 +257,8 @@ $base-color: red;
 
 用于配置「css-loader 作用于 @import 的资源之前」有多少个 loader。
 
-要解决这个问题，可以在css-loader中配置importLoaders,默认是0，配置的是1，从,根据自己配置loader情况来选择配置几
-
+我们在js文件中引入scss/或者css，都会被所有loader解析，但是如果在scss文件中引入scss/css，解析的时候可能不会被所有匹配到的loader解析，要解决这个问题，可以在css-loader中配置importLoaders选项,默认是0，根据自己配置loader情况来选择配置，
+例如配置1，解析css文件的时候会先通过postcss-loader解析，再通过css-loader解析
 比如：
 
 ```javascript
@@ -287,4 +287,4 @@ $base-color: red;
 ```
 如果在scss文件中通过@import引入css,不会执行postcss-loader,需要把importLoaders配置1，才会为scss中引入的css加前缀
 
-**⚠️注意:** 最好把`sass-loader`配置在`postcss-loader`前面，不然不管importLoaders配置为几，在scss文件中引入的scss都不会被postcss-loader解析
+**⚠️注意:** 最好把`sass-loader`配置在`postcss-loader`前面，不然不管importLoaders配置为几，在scss文件中引入的scss都不会被postcss-loader解析并加上前缀
