@@ -121,7 +121,7 @@ console.log(str.includes('s'));
 }
 ```
 
-再次进行打包,打包没报错，但是有警告，先忽略警告，会看到下面这一段话，提示我们按照上面配置可以吧入口文件引入的`@babel/polyfill`去掉,
+再次进行打包,会看到下面这一段话，提示我们按照上面配置可以吧入口文件引入的`@babel/polyfill`去掉,
 我们把入口文件的`import '@babel/polyfill'` 去掉，再次打包，这时发现main.js已经只有60多k了
 
 ```
@@ -130,3 +130,4 @@ console.log(str.includes('s'));
 ```
 
 **⚠️注意：**： 如果打包报错的话，安装一下`core-js@2`
+

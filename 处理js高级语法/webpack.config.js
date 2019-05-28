@@ -80,7 +80,6 @@ module.exports = {
     ],
     devServer: {
         contentBase: resolve('dist'),
-        host: '192.168.3.233',
         port: 9200,
         progress: true,
         compress: false,
