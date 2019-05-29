@@ -102,6 +102,8 @@ webpack-dev-server底层是依赖[http-proxy-middleware](https://github.com/chim
 
 ### HMR(hot module replacement)
 
+**⚠️注意：** 启用热更新之后，output里面的filename不要配置`[contenthash]`或者`[chunkhash]`,不然会报错
+
 热更新在webpack中也是非常好用的一个功能，可以在我们更该代码后帮助我们更新修改的部分，而不是直接刷新浏览器，这样在开发调试的时候就非常方便
 
 首先配置devServer
