@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const webpack = require('webpack')
 
 const resolve = (...paths) => path.resolve(__dirname, ...paths)
 
@@ -9,7 +10,7 @@ module.exports = {
     entry: resolve('src/index.js'), // 入口文件
     output: {
         path: resolve('dist'),
-        filename: '[name].[contenthash].js'
+        filename: '[name].[hash].js'
     },
     module: {
         rules: [
@@ -76,7 +77,8 @@ module.exports = {
             template: resolve('index.html'),
             filename: 'index.html',
             hash: true,
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin()
     ],
     devServer: {
         contentBase: resolve('dist'),
@@ -92,11 +94,13 @@ module.exports = {
         //         }
         //     }
         // }
-        proxy: [
-            {
-                context: ['/api', '/api1'],
-                target: 'http://localhost:9300'
-            }
-        ]
+        // proxy: [
+        //     {
+        //         context: ['/api', '/api1'],
+        //         target: 'http://localhost:9300'
+        //     }
+        // ]
+        hot: true,
+        hotOnly: true
     }
 }
