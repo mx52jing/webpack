@@ -9,7 +9,7 @@ module.exports = {
     entry: resolve('src/index.js'), // 入口文件
     output: {
         path: resolve('dist'),
-        filename: '[name].[hash].js'
+        filename: '[name].[contenthash].js'
     },
     module: {
         rules: [

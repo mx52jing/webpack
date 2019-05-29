@@ -25,7 +25,7 @@ entry: {
 ```javascript
 output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[hash].js'
+    filename: '[name].[contenthash].js'
 }
 ```
 output选项
@@ -33,7 +33,14 @@ output选项
 |选项|说明|
 |--|--|
 |path|打包代码存放的目录，**必须是绝对路径**|
-|filename|打包后的文件名称，可以写死例如`bundle.js`<br>[name]: 当`entry`是字符串时，`[name]`默认是`main`，当`entry`是对象时，`[name]`是`对象路径对应的key值`。<br>[hash]: 打包后文件的`hash`值，这个值是根据打包后文件内容生成的`hash`值，**如果文件内容不变，连续打包两次hash值一样**,可以自己规定hash值长度，使用`[hash:length]`，length就是自己期望的hash值长度|
+|filename|打包后的文件名称，可以写死例如`bundle.js`<br>[name]: 当`entry`是字符串时，`[name]`默认是`main`，当`entry`是对象时，`[name]`是`对象路径对应的key值`。|
+
+**filename 中的hash， chunkhash，contenthash**
+
+- hash 是根据整个项目来生成的，只要项目中有一个文件改变了，项目生成的hash值都会改变
+- chunkhash 指的是同一chunk只要内容不变，chunkhash内容就不会变
+- contenthash 是根据文件内容来生成的唯一hash，只有当文件内容改变了，contenthash才会改变
+
 
 #### webpack-dev-server
 

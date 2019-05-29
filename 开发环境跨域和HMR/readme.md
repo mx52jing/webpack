@@ -80,7 +80,7 @@ webpack-dev-server中又一个proxy选项，可帮助我们实现跨域
 
 如果我们想把多个路径代理到一个服务器，可以使用`context`
 
-如下 `/api1`和`/api2`都会被代理到`http://localhost:9300/api1`和`http://localhost:9300/api2`
+如下 `/api1`和`/api2`分别会被代理到`http://localhost:9300/api1`和`http://localhost:9300/api2`
 
 ```javascript
     devServer: {
