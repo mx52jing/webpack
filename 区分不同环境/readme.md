@@ -30,7 +30,7 @@
 
 ### process.env.NODE_ENV
 
-在配置文件中，通常需要用到环境变量`NODE_ENV`，默认是没有的，需要我们在启动的时候设置一下，需要用到一个模块`cross-env`
+在配置文件中，通常需要用到node环境变量`NODE_ENV`，默认是没有的，需要我们在启动的时候设置一下，需要用到一个模块`cross-env`
 
 下载`NODE_ENV`，并且在`package.json`配置scripts
 
@@ -50,3 +50,21 @@
   },
 ```
 但是在windows上可能会出现问题，所以需要`cross-env`，可以同时兼容不同系统
+
+### 全局变量
+
+我们使用`cross-env`可以设置node环境变量，在打包的时候使用，如果想设置其他环境变量在全局使用，可以使用webpack的内置插件`DefinePlugin`
+
+例如：
+
+在`plugins`中添加
+
+```javascript
+    new webpack.DefinePlugin({
+        'myEnv': JSON.stringify('my')
+    })
+```
+
+在index.js中打印`myEnv`, 就会打印出`my`
+
+在`DefinePlugin`中不要直接写字符串，不然`webpack`会把它当作一个变量，如果没有这个变量，就会报错，设置字符串变量们，通过`JSON.stringify`来设置

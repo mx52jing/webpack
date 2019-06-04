@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const webpack = require('webpack')
 
 module.exports = {
     entry:  path.join(__dirname, '../src/index.js'),
@@ -67,6 +68,10 @@ module.exports = {
             filename: 'index.html',
             hash: true
         }),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new webpack.DefinePlugin({
+            'myEnv': JSON.stringify('my')
+        })
     ]
 }
+console.log(process.env, myEnv);
