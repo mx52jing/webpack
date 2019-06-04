@@ -2,7 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
-const resolve = (...paths) => path.resolve(__dirname, ...paths)
+const resolve = (...paths) => path.resolve.call(__dirname, ...paths)
 
 module.exports = {
     mode: 'development',

@@ -1,15 +1,13 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-
-const resolve = (...paths) => path.resolve.call(__dirname, ...paths)
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-    mode: 'development',
-    entry: resolve('src/index.js'), // 入口文件
+    entry:  path.join(__dirname, '../src/index.js'),
     output: {
-        path: resolve('dist'),
-        filename: '[name].[contenthash].js'
+        path: path.resolve(__dirname, '../dist'),
+        filename: "[name].[contenthash].js"
     },
     module: {
         rules: [
@@ -21,7 +19,8 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    'style-loader',
+                    process.env.NODE_ENV === 'development' ?
+                        'style-loader' : MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
                         options: {
@@ -29,15 +28,7 @@ module.exports = {
                         }
                     },
                     'postcss-loader',
-                    'sass-loader',
-                    {
-                        loader: 'style-resources-loader',
-                        options: {
-                            patterns: [
-                                resolve('src', 'common.scss')
-                            ]
-                        }
-                    }
+                    'sass-loader'
                 ]
             },
             {
@@ -71,18 +62,11 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: resolve('index.html'),
+            template: path.join(__dirname, '../index.html'),
             filename: 'index.html',
-            hash: true,
-        })
-    ],
-    devServer: {
-        contentBase: resolve('dist'),
-        port: 9200,
-        progress: true,
-        compress: false,
-        open: false
-    }
+            hash: true
+        }),
+        new CleanWebpackPlugin()
+    ]
 }
