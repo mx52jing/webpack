@@ -68,3 +68,10 @@
 在index.js中打印`myEnv`, 就会打印出`my`
 
 在`DefinePlugin`中不要直接写字符串，不然`webpack`会把它当作一个变量，如果没有这个变量，就会报错，设置字符串变量们，通过`JSON.stringify`来设置
+
+[官网](https://webpack.docschina.org/plugins/define-plugin/#src/components/Sidebar/Sidebar.jsx)的解释
+
+- 如果这个值是一个字符串，它会被当作一个代码片段来使用。
+- 如果这个值不是字符串，它会被转化为字符串(包括函数)。
+- 如果这个值是一个对象，它所有的 key 会被同样的方式定义。
+- 如果在一个 key 前面加了 typeof,它会被定义为 typeof 调用。
