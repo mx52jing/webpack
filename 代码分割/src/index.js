@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { joinStr } from './util/filter'
 
-console.log(_.join([1, 3, 5, 6], '*'));
+console.log(joinStr([1, 3, 5, 6], '*'));
 console.log(222);

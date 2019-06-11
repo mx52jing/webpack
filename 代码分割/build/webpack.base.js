@@ -74,9 +74,9 @@ module.exports = {
             'myEnv': JSON.stringify('my')
         })
     ],
-    // optimization: {
-    //     splitChunks: {
-    //         chunks: "all"
-    //     }
-    // }
+    optimization: {
+        splitChunks: {
+            chunks: "all"
+        }
+    }
 }
