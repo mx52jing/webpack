@@ -1,7 +1,5 @@
 import _ from 'lodash'
 import axios from 'axios'
-import './1'
-import './2'
 // function fetchLibrary () {
 //     import(/* webpackChunkName: 'lodash' */ 'lodash').then(({ default: _ }) => {
 //         console.log(_.join([1, 3], '-'));
