@@ -9,6 +9,7 @@ module.exports = merge(baseConfig, {
     devServer: {
         contentBase: resolve('dist'),
         port: '8100',
-        progress: true
+        progress: true,
+        open: true
     }
 })

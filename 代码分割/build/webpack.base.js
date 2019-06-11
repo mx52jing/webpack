@@ -74,9 +74,27 @@ module.exports = {
             'myEnv': JSON.stringify('my')
         })
     ],
+    // performance: false,// 如果出现性能提示警告，配置一下这个选项就不会有警告
     optimization: {
         splitChunks: {
-            chunks: "all"
+            chunks: "all",
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10,
+                },
+                lodash: {
+                    test: /[\\/]node_modules[\\/]lodash[\\/]/,
+                    name: 'lodash',
+                    // filename: 'lodash.js'
+                    priority: -5
+                },
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true
+                }
+            }
         }
     }
 }
