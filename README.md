@@ -8,3 +8,4 @@
 - [处理js](./处理js高级语法/readme.md)
 - [开发环境跨域和HMR](./开发环境跨域和HMR/readme.md)
 - [区分不同环境](./区分不同环境/readme.md)
+- [代码分割](./代码分割/readme.md)
