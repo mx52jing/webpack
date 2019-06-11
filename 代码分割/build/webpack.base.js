@@ -8,8 +8,6 @@ module.exports = {
     entry:  path.join(__dirname, '../src/index.js'),
     output: {
         path: path.resolve(__dirname, '../dist'),
-        filename: "[name].[contenthash].js",
-        // chunkFilename: '[name].[chunkhash:8].chunk.js'
     },
     module: {
         rules: [

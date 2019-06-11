@@ -6,6 +6,9 @@ const resolve = (...paths) => path.resolve.call(__dirname, '../', ...paths)
 
 module.exports = merge(baseConfig, {
     mode: 'development',
+    output: {
+        filename: '[name].[hash].js'
+    },
     devServer: {
         contentBase: resolve('dist'),
         port: '8600',
