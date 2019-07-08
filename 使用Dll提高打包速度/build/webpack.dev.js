@@ -9,7 +9,9 @@ module.exports = merge(baseConfig, {
     },
     devServer: {
         contentBase: path.resolve(__dirname, '../dist'),
-        port: '8600',
-        progress: true
+        historyApiFallback: true,
+        port: '8100',
+        progress: true,
+        open: true
     }
 })
