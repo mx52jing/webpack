@@ -1,3 +1,5 @@
 import React from 'react'
-
-export default () => <div>Home</div>
+import { join } from 'lodash'
+export default () => (
+  <div>{join(['H', 'o', 'm', 'e'], '')}</div>
+)

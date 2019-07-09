@@ -3,15 +3,15 @@ const merge = require('webpack-merge')
 const baseConfig = require('./webpack.base')
 
 module.exports = merge(baseConfig, {
-    mode: 'development',
-    output: {
-        filename: '[name].[hash].js'
-    },
-    devServer: {
-        contentBase: path.resolve(__dirname, '../dist'),
-        historyApiFallback: true,
-        port: '8100',
-        progress: true,
-        open: true
-    }
+  mode: 'development',
+  output: {
+    filename: '[name].[hash].js'
+  },
+  devServer: {
+    contentBase: path.resolve(__dirname, '../dist'),
+    historyApiFallback: true,
+    port: '8100',
+    progress: true,
+    open: true
+  }
 })
